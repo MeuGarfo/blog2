@@ -1,5 +1,5 @@
 <?php
-$data['title']='Guest';
+$data['title']='Blog';
 $messageCreateForm=$View->view('message/create', [], false);
 $messages=$View->view('message/list', $data, false);
 $data['content']=<<<heredoc

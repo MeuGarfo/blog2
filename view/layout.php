@@ -17,7 +17,7 @@
     <div class="c">
         <div class="r">
             <div class="g12">
-                <h1>Guest</h1>
+                <h1>Blog</h1>
             </div>
         </div>
         <div class="r">
