@@ -1,13 +1,13 @@
 #!/bin/bash
 php=`which php`
 
-dropAll()
+superUser()
 {
-	touch offline
+	touch ../offline
 	clear
 	echo "criando super usuário..."
 	$php bin/superUser.php
-	rm offline
+	rm ../offline
 }
 
 clear
