@@ -5,7 +5,13 @@ $user['email']=$_ENV['su_email'];
 $user['password']=$_ENV['su_password'];
 $user['type']='super';
 if ($db->get('users', '*', ['email'=>$user['email']])) {
-    print 'o email já está em uso por outro usuário'.PHP_EOL;
+    $user['password']=password_hash($user['password'], PASSWORD_DEFAULT);
+    $where=[
+        'email'=>$user['email']
+    ];
+    unset($user['email']);
+    $db->update('users', $user, $where);
+    print 'nome e senha atualizados com sucesso'.PHP_EOL;
 } else {
     $Auth=new Basic\Auth($db);
     $user=$Auth->signup($user);
