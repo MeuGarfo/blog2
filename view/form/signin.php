@@ -32,7 +32,6 @@
             $('#email').on('focus',function(){
                 defaultLabel();
             });
-
             $('#password').on('focus',function(){
                 defaultLabel();
             });
