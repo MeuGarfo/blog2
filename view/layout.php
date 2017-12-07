@@ -12,6 +12,7 @@
         }
     }
     </style>
+    <script src="https://cdn.rawgit.com/jquerylight/jquerylight/master/dist/jquerylight.min.js"></script>
 </head>
 <body>
     <div class="c">
