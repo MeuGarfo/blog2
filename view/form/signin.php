@@ -35,7 +35,6 @@
             $('#password').on('focus',function(){
                 defaultLabel();
             });
-
             </script>
         </form>
     </div>
