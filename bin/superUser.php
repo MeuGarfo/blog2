@@ -13,8 +13,8 @@ if ($db->get('users', '*', ['email'=>$user['email']])) {
     $db->update('users', $user, $where);
     print 'nome e senha atualizados com sucesso'.PHP_EOL;
 } else {
-    $Auth=new Basic\Auth($db);
-    $user=$Auth->signup($user);
+    $auth=require_once ROOT.'app/inc/auth.php';
+    $user=$auth->signup($user);
     if (isset($user['error'])) {
         print 'erro ao criar super usuário:'.PHP_EOL;
         var_dump($user);
