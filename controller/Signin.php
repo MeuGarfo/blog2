@@ -7,6 +7,10 @@ class Signin
 {
     public function get()
     {
-        print 'ok';
+        $View=new View();
+        $data=[
+            'View'=>$View
+        ];
+        $View->view('read/signin', $data);
     }
 }
