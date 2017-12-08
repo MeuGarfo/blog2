@@ -8,23 +8,23 @@ class Signin
 {
     public function get()
     {
-        $View=new View();
+        $view=new View();
         $data=[
-            'View'=>$View
+            'view'=>$view
         ];
-        $View->view('read/signin', $data);
+        $view->view('read/signin', $data);
     }
     public function post()
     {
         $auth=require_once ROOT.'app/inc/auth.php';
         $user=$auth->signin();
-        $View=new View();
+        $view=new View();
         $data['View']=$View;
         if (isset($user['error'])) {
             $data['error']=array_flip($user['error']);
-            $View->view('read/signin', $data);
+            $view->view('read/signin', $data);
         } else {
-            $View->redirect('/posts');
+            $view->redirect('/posts');
         }
     }
 }

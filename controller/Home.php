@@ -7,7 +7,7 @@ class Home
 {
     public function get()
     {
-        $View=new View();
+        $view=new View();
         $db=require_once ROOT.'db.php';
         $where=[
             'id[>]'=>0
@@ -15,15 +15,15 @@ class Home
         $messages=$db->select('messages', '*', $where);
         if ($messages) {
             $data=[
-                'View'=>$View,
+                'view'=>$View,
                 'messages'=>$messages
             ];
-            $View->view('read/home', $data);
+            $view->view('read/home', $data);
         }
         $data=[
-            'View'=>$View,
+            'view'=>$View,
             'messages'=>$messages
         ];
-        $View->view('read/home', $data);
+        $view->view('read/home', $data);
     }
 }
