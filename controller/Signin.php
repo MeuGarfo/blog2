@@ -24,7 +24,7 @@ class Signin
             $data['error']=array_flip($user['error']);
             $View->view('read/signin', $data);
         } else {
-            print 'Bem vindo '.$user['name'];
+            $View->redirect('/posts');
         }
     }
 }
