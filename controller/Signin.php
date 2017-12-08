@@ -19,7 +19,7 @@ class Signin
         $auth=require_once ROOT.'app/inc/auth.php';
         $user=$auth->signin();
         $view=new View();
-        $data['View']=$View;
+        $data['View']=$view;
         if (isset($user['error'])) {
             $data['error']=array_flip($user['error']);
             $view->view('read/signin', $data);

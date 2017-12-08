@@ -11,7 +11,7 @@ class Posts
         $auth=ROOT.'app/inc/auth.php';
         $data['user']=$auth->isAuth();
         $view=new View();
-        $data['view']=$View;
+        $data['view']=$view;
         if (is_null($slug)) {
             $db=require_once ROOT.'db.php';
             $where=["id[>=]" => 1];

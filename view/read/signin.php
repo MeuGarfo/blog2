@@ -1,4 +1,4 @@
 <?php
 $data['title']='Entrar';
-$data['content']=$View->view('form/signin', $data, false);
-$View->view('layout', $data);
+$data['content']=$view->view('form/signin', $data, false);
+$view->view('layout', $data);

@@ -1,6 +1,6 @@
 <?php
-$View=new Basic\View();
-$segment=$View->segment();
+$view=new Basic\View();
+$segment=$view->segment();
 $method=@$_SERVER['REQUEST_METHOD'];
 $firstSegment=@$segment[0];
 if ($firstSegment=='/') {
@@ -30,9 +30,9 @@ if ($firstSegment=='/') {
         /*DEFAULT*/
         default:
         $data=[
-            'View'=>$View
+            'view'=>$view
         ];
-        $View->view('404', $data);
+        $view->view('404', $data);
         break;
     }
 }

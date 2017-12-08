@@ -15,13 +15,13 @@ class Home
         $messages=$db->select('messages', '*', $where);
         if ($messages) {
             $data=[
-                'view'=>$View,
+                'view'=>$view,
                 'messages'=>$messages
             ];
             $view->view('read/home', $data);
         }
         $data=[
-            'view'=>$View,
+            'view'=>$view,
             'messages'=>$messages
         ];
         $view->view('read/home', $data);
