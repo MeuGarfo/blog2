@@ -9,8 +9,8 @@ if ($firstSegment=='/') {
 } elseif ($firstSegment=='message' && $method=='POST') {
 } else {
     switch ($firstSegment) {
-        case 'signin':
         /*SIGNIN*/
+        case 'signin':
         $controller=new app\controller\Signin();
         if ($method=='POST') {
             $controller->post();
@@ -18,6 +18,16 @@ if ($firstSegment=='/') {
             $controller->get();
         }
         break;
+        /*POSTS*/
+        case 'posts':
+        $controller=new app\controller\Posts();
+        if ($method=='POST') {
+            $controller->post();
+        } else {
+            $controller->get();
+        }
+        break;
+        /*DEFAULT*/
         default:
         $data=[
             'View'=>$View
