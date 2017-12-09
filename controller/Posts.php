@@ -9,9 +9,9 @@ class Posts
     public function get($slug=null)
     {
         /*REQUIREs*/
-        require_once ROOT.'app/inc/auth.php';
         require_once ROOT.'db.php';
-        require_once ROOT.'inc/view.php';
+        require_once APP.'inc/auth.php';
+        require_once APP.'inc/view.php';
         /*VARs*/
         $data['user']=$auth->isAuth();
         $data['view']=$view;

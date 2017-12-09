@@ -9,7 +9,7 @@ class Home
     {
         /*REQUIREs*/
         require_once ROOT.'db.php';
-        require_once ROOT.'inc/view.php';
+        require_once APP.'inc/view.php';
         /*VARs*/
         $where=[
             'id[>]'=>0

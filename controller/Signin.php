@@ -9,7 +9,7 @@ class Signin
     public function get()
     {
         /*REQUIREs*/
-        require_once ROOT.'inc/view.php';
+        require_once APP.'inc/view.php';
         /*VARs*/
         $data=[
             'view'=>$view
@@ -20,8 +20,8 @@ class Signin
     public function post()
     {
         /*REQUIREs*/
-        require_once ROOT.'app/inc/auth.php';
-        require_once ROOT.'inc/view.php';
+        require_once APP.'inc/auth.php';
+        require_once APP.'inc/view.php';
         /*VARs*/
         $user=$auth->signin();
         $data['View']=$view;
