@@ -2,11 +2,16 @@
     <div class="g3"></div>
     <div class="g6">
         <h2>Entrar</h2>
+        <?php
+                if (isset($error)) {
+                    print '<p id="error"><b>Erro:</b> Dados incorretos</p>';
+                }
+         ?>
         <form class="" action="/signin" method="post">
             <label for="email">
                 <?php
-                if (isset($error['invalid_email'])) {
-                    print '<span style="color:red">Endereço de email inválido</span>';
+                if (isset($error)) {
+                    print '<span style="color:red">Email</span>';
                 } else {
                     print 'Email';
                 }
@@ -15,20 +20,23 @@
             <input type="email" name="email" id="email" required>
             <label for="password">
                 <?php
-                if (isset($error['invalid_password'])) {
-                    print '<span style="color:red">Senha válida</span>';
+                if (isset($error)) {
+                    print '<span style="color:red">Senha</span>';
                 } else {
-                    print 'Email';
+                    print 'Senha';
                 }
                 ?>
             </label>
             <input type="password" name="password" id="password" required pattern=".{8,}" title="8 caracteres no mínimo">
             <button type="submit">Entrar</button>
             <script type="text/javascript">
+            /*FUNCTIONs*/
             function defaultLabel(){
                 $("label[for='email']").html('Email');
                 $("label[for='password']").html('Senha');
+                $("#error").hide();
             }
+            /*TRIGGERs*/
             $('#email').on('focus',function(){
                 defaultLabel();
             });
