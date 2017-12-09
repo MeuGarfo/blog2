@@ -8,11 +8,12 @@ class Posts
 {
     public function get($slug=null)
     {
+        /*REQUIREs*/
+        require_once ROOT.'app/inc/auth.php';
+        require_once ROOT.'db.php';
+        require_once ROOT.'inc/view.php';
         /*VARs*/
-        $auth=require_once ROOT.'app/inc/auth.php';
-        $db=require_once ROOT.'db.php';
         $data['user']=$auth->isAuth();
-        $view=new View();
         $data['view']=$view;
         /*CODEs*/
         if (is_null($slug)) {

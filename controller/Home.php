@@ -7,23 +7,19 @@ class Home
 {
     public function get()
     {
-        $view=new View();
-        $db=require_once ROOT.'db.php';
+        /*REQUIREs*/
+        require_once ROOT.'db.php';
+        require_once ROOT.'inc/view.php';
+        /*VARs*/
         $where=[
             'id[>]'=>0
         ];
         $messages=$db->select('messages', '*', $where);
-        if ($messages) {
-            $data=[
-                'view'=>$view,
-                'messages'=>$messages
-            ];
-            $view->view('read/home', $data);
-        }
         $data=[
             'view'=>$view,
             'messages'=>$messages
         ];
+        /*CODEs*/
         $view->view('read/home', $data);
     }
 }

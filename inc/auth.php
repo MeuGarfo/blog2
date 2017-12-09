@@ -1,3 +1,3 @@
 <?php
-$db=require_once ROOT.'db.php';
-return new Basic\Auth($db);
+require_once ROOT.'db.php';
+$auth=new Basic\Auth($db);

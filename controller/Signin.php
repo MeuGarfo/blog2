@@ -8,18 +8,24 @@ class Signin
 {
     public function get()
     {
-        $view=new View();
+        /*REQUIREs*/
+        require_once ROOT.'inc/view.php';
+        /*VARs*/
         $data=[
             'view'=>$view
         ];
+        /*CODEs*/
         $view->view('read/signin', $data);
     }
     public function post()
     {
-        $auth=require_once ROOT.'app/inc/auth.php';
+        /*REQUIREs*/
+        require_once ROOT.'app/inc/auth.php';
+        require_once ROOT.'inc/view.php';
+        /*VARs*/
         $user=$auth->signin();
-        $view=new View();
         $data['View']=$view;
+        /*CODEs*/
         if (isset($user['error'])) {
             $data['error']=array_flip($user['error']);
             $view->view('read/signin', $data);
