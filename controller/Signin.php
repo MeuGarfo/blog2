@@ -8,28 +8,36 @@ class Signin
 {
     public function get()
     {
-        /*INCs*/
         /*VARs*/
+        $db=require_once ROOT.'db.php';
         $view=new View();
+        $auth=new Auth($db);
         $data['view']=$view;
         /*RULEs*/
-        $view->view('read/signin', $data);
+        if ($auth->isAuth()) {
+            $view->redirect('/posts');
+        } else {
+            $view->view('read/signin', $data);
+        }
     }
     public function post()
     {
-        /*INCs*/
-        $db=require_once ROOT.'db.php';
         /*VARs*/
+        $db=require_once ROOT.'db.php';
         $auth=new Auth($db);
         $view=new View();
-        $user=$auth->signin();
         $data['view']=$view;
         /*RULEs*/
-        if (isset($user['error'])) {
-            $data['error']=array_flip($user['error']);
-            $view->view('read/signin', $data);
-        } else {
+        if ($auth->isAuth()) {
             $view->redirect('/posts');
+        } else {
+            $user=$auth->signin();
+            if (isset($user['error'])) {
+                $data['error']=array_flip($user['error']);
+                $view->view('read/signin', $data);
+            } else {
+                $view->redirect('/posts');
+            }
         }
     }
 }

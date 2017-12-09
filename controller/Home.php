@@ -8,9 +8,10 @@ class Home
     public function get()
     {
         /*INCs*/
-        require_once ROOT.'db.php';
-        require_once APP.'inc/view.php';
+        $db=require_once ROOT.'db.php';
         /*VARs*/
+        $auth=new Auth($db);
+        $view=new View();
         $where=[
             'id[>]'=>0
         ];
