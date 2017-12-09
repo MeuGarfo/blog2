@@ -3,6 +3,7 @@ $view=new Basic\View();
 $segment=$view->segment();
 $method=@$_SERVER['REQUEST_METHOD'];
 $firstSegment=@$segment[0];
+$secondSegment=@$segment[0];
 if ($firstSegment=='/') {
     $Home=new app\controller\Home();
     $Home->get();
@@ -20,7 +21,7 @@ if ($firstSegment=='/') {
         break;
         /*POSTS*/
         case 'posts':
-        $controller=new app\controller\Posts();
+        $controller=new app\controller\Posts($secondSegment);
         if ($method=='POST') {
             $controller->post();
         } else {

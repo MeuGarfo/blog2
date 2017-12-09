@@ -6,7 +6,28 @@ use Basic\View;
 
 class Posts
 {
+    public function create()
+    {
+        $auth=new Auth();
+        $user=$auth->isAuth();
+        $view=new View();
+        if ($user) {
+        } else {
+            $view->redirect('/signin');
+        }
+    }
     public function get($slug=null)
+    {
+        if (is_null($slug) && isset($_GET['new'])) {
+            $this->create();
+        } elseif (is_null($slug)) {
+            $this->showAll();
+        }
+    }
+    public function post()
+    {
+    }
+    public function showAll()
     {
         /*VARs*/
         $db=require_once ROOT.'db.php';
@@ -26,8 +47,5 @@ class Posts
         } else {
             $view->redirect('/signin');
         }
-    }
-    public function post()
-    {
     }
 }
