@@ -8,12 +8,15 @@ class Posts
 {
     public function create()
     {
+        /*VARs*/
         $auth=new Auth();
-        $user=$auth->isAuth();
-        $view=new View();
-        if ($user) {
+        $data['user']=$auth->isAuth();
+        $data['view']=new View();
+        /*RULEs*/
+        if ($data['user']) {
+            $data['view']->view('/form/postCreate', $data);
         } else {
-            $view->redirect('/signin');
+            $data['view']->redirect('/signin');
         }
     }
     public function get($slug=null)
