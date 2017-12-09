@@ -1,5 +1,7 @@
 id
 title
+cover
+description
 content
 user_id
 created_at
