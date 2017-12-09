@@ -9,12 +9,13 @@ class Posts
     public function create()
     {
         /*VARs*/
-        $auth=new Auth();
+        $db=require_once ROOT.'db.php';
+        $auth=new Auth($db);
         $data['user']=$auth->isAuth();
         $data['view']=new View();
         /*RULEs*/
         if ($data['user']) {
-            $data['view']->view('/form/postCreate', $data);
+            $data['view']->view('/read/postCreate', $data);
         } else {
             $data['view']->redirect('/signin');
         }
