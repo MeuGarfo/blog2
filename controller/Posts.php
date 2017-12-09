@@ -8,14 +8,14 @@ class Posts
 {
     public function get($slug=null)
     {
-        /*REQUIREs*/
+        /*INCs*/
         require_once ROOT.'db.php';
         require_once APP.'inc/auth.php';
         require_once APP.'inc/view.php';
         /*VARs*/
         $data['user']=$auth->isAuth();
         $data['view']=$view;
-        /*CODEs*/
+        /*RULEs*/
         if (is_null($slug)) {
             $where=[
                 "id[>=]" => 1

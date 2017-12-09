@@ -7,7 +7,7 @@ class Home
 {
     public function get()
     {
-        /*REQUIREs*/
+        /*INCs*/
         require_once ROOT.'db.php';
         require_once APP.'inc/view.php';
         /*VARs*/
@@ -19,7 +19,7 @@ class Home
             'view'=>$view,
             'messages'=>$messages
         ];
-        /*CODEs*/
+        /*RULEs*/
         $view->view('read/home', $data);
     }
 }
