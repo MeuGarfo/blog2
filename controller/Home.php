@@ -7,9 +7,8 @@ class Home
 {
     public function get()
     {
-        /*INCs*/
-        $db=require_once ROOT.'db.php';
         /*VARs*/
+        $db=require_once ROOT.'db.php';
         $auth=new Auth($db);
         $view=new View();
         $where=[
