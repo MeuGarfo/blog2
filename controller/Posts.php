@@ -8,20 +8,23 @@ class Posts
 {
     public function get($slug=null)
     {
-        /*INCs*/
-        $db=require_once ROOT.'db.php';
         /*VARs*/
+        $db=require_once ROOT.'db.php';
         $auth=new Auth($db);
         $view=new View();
         $data['user']=$auth->isAuth();
-        $data['view']=$view;
-        /*RULEs*/
-        if (is_null($slug)) {
-            $where=[
-                "id[>=]" => 1
-            ];
-            $data['posts']=$db->select('posts', '*', $where);
-            $view->view('read/posts', $data);
+        if ($data['user']) {
+            $data['view']=$view;
+            /*RULEs*/
+            if (is_null($slug) && $auth->isAuth()) {
+                $where=[
+                    "id[>=]" => 1
+                ];
+                $data['posts']=$db->select('posts', '*', $where);
+                $view->view('read/posts', $data);
+            }
+        } else {
+            $view->redirect('/signin');
         }
     }
     public function post()
