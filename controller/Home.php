@@ -2,6 +2,7 @@
 namespace app\controller;
 
 use Basic\View;
+use Basic\Auth;
 
 class Home
 {

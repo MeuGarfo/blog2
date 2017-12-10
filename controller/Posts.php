@@ -24,14 +24,14 @@ class Posts
     {
         if (is_null($slug) && isset($_GET['new'])) {
             $this->create();
-        } elseif (is_null($slug)) {
-            $this->showAll();
+        } else {
+            $this->showAll($slug);
         }
     }
     public function post()
     {
     }
-    public function showAll()
+    public function showAll($slug)
     {
         /*VARs*/
         $db=require_once ROOT.'db.php';
