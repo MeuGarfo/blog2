@@ -6,17 +6,17 @@ switch (@$segment[0]) {
     /*home*/
     case '/':
     $controller=new app\controller\Home();
-    $controller->index($segment, $method);
+    $controller->index($method);
     break;
     /*signin*/
     case 'signin':
     $controller=new app\controller\Signin();
-    $controller->index($segment, $method);
+    $controller->index($method);
     break;
     /*posts*/
     case 'posts':
     $controller=new app\controller\Posts();
-    $controller->index($segment, $method);
+    $controller->index($method);
     break;
     /*404*/
     default:
