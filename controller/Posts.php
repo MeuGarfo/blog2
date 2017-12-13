@@ -6,7 +6,7 @@ use Basic\View;
 
 class Posts
 {
-    public function create()
+    public function readCreate()
     {
         /*VARs*/
         $db=require_once ROOT.'db.php';
@@ -22,8 +22,8 @@ class Posts
     }
     public function get($slug=null)
     {
-        if (is_null($slug) && isset($_GET['new'])) {
-            $this->create();
+        if (is_null($slug) && isset($_GET['readCreate'])) {
+            $this->readCreate();
         } else {
             $this->showAll($slug);
         }
