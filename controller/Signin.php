@@ -17,7 +17,7 @@ class Signin
         if ($auth->isAuth()) {
             $view->redirect('/posts');
         } else {
-            $view->view('read/signin', $data);
+            $view->view('signin/read', $data);
         }
     }
     public function post()

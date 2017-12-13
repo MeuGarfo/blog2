@@ -49,7 +49,7 @@ class Posts
                     "id[>=]" => 1
                 ];
                 $data['posts']=$db->select('posts', '*', $where);
-                $view->view('posts/read', $data);
+                $view->view('posts/showAll', $data);
             }
         } else {
             $view->redirect('/signin');
