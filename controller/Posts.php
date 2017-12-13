@@ -9,12 +9,18 @@ class Posts
     public function get($slug=null)
     {
         if (is_null($slug) && isset($_GET['create'])) {
-            $this->getCreate();
+            $this->create();
         } else {
             $this->showAll($slug);
         }
     }
-    public function getCreate()
+    public function post()
+    {
+        if (is_null($slug) && isset($_POST['create'])) {
+            $this->create();
+        }
+    }
+    public function create()
     {
         /*VARs*/
         $db=require_once ROOT.'db.php';
@@ -23,15 +29,9 @@ class Posts
         $data['view']=new View();
         /*RULEs*/
         if ($data['user']) {
-            $data['view']->view('/read/postCreate', $data);
+            $data['view']->view('post/create', $data);
         } else {
             $data['view']->redirect('/signin');
-        }
-    }
-    public function post()
-    {
-        if (is_null($slug) && isset($_POST['create'])) {
-            $this->postCreate();
         }
     }
     public function showAll($slug)
