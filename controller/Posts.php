@@ -6,7 +6,15 @@ use Basic\View;
 
 class Posts
 {
-    public function readCreate()
+    public function get($slug=null)
+    {
+        if (is_null($slug) && isset($_GET['create'])) {
+            $this->getCreate();
+        } else {
+            $this->showAll($slug);
+        }
+    }
+    public function getCreate()
     {
         /*VARs*/
         $db=require_once ROOT.'db.php';
@@ -20,16 +28,11 @@ class Posts
             $data['view']->redirect('/signin');
         }
     }
-    public function get($slug=null)
-    {
-        if (is_null($slug) && isset($_GET['readCreate'])) {
-            $this->readCreate();
-        } else {
-            $this->showAll($slug);
-        }
-    }
     public function post()
     {
+        if (is_null($slug) && isset($_POST['create'])) {
+            $this->postCreate();
+        }
     }
     public function showAll($slug)
     {
