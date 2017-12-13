@@ -21,6 +21,6 @@ class Home
             'messages'=>$messages
         ];
         /*RULEs*/
-        $view->view('read/home', $data);
+        $view->view('home/read', $data);
     }
 }

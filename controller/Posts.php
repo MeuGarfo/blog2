@@ -29,7 +29,7 @@ class Posts
         $data['view']=new View();
         /*RULEs*/
         if ($data['user']) {
-            $data['view']->view('post/create', $data);
+            $data['view']->view('posts/create', $data);
         } else {
             $data['view']->redirect('/signin');
         }
@@ -49,7 +49,7 @@ class Posts
                     "id[>=]" => 1
                 ];
                 $data['posts']=$db->select('posts', '*', $where);
-                $view->view('read/posts', $data);
+                $view->view('posts/read', $data);
             }
         } else {
             $view->redirect('/signin');
