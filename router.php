@@ -6,27 +6,19 @@ $firstSegment=@$segment[0];
 $secondSegment=@$segment[0];
 if ($firstSegment=='/') {
     $Home=new app\controller\Home();
-    $Home->get();
+    $Home->index();
 } elseif ($firstSegment=='message' && $method=='POST') {
 } else {
     switch ($firstSegment) {
         /*SIGNIN*/
         case 'signin':
         $controller=new app\controller\Signin();
-        if ($method=='POST') {
-            $controller->post();
-        } else {
-            $controller->get();
-        }
+        $controller->index();
         break;
         /*POSTS*/
         case 'posts':
-        $controller=new app\controller\Posts($secondSegment);
-        if ($method=='POST') {
-            $controller->post();
-        } else {
-            $controller->get();
-        }
+        $controller=new app\controller\Posts();
+        $controller->index();
         break;
         /*DEFAULT*/
         default:
