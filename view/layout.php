@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title><?php print $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/mushape/1k/master/dist/1k.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/mushape/1k/7d47b0f/dist/1k.min.css">
     <script src="https://cdn.rawgit.com/jquerylight/jquerylight/master/dist/jquerylight.min.js"></script>
 </head>
 <body>
