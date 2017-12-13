@@ -6,6 +6,14 @@ use Basic\View;
 
 class Posts
 {
+    public function index($method)
+    {
+        if ($method=='POST') {
+            $this->post();
+        } else {
+            $this->get();
+        }
+    }
     public function get($slug=null)
     {
         if (is_null($slug) && isset($_GET['create'])) {
