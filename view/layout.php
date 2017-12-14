@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.rawgit.com/mushape/1k/7d47b0f/dist/1k.min.css">
     <script src="https://cdn.rawgit.com/jquerylight/jquerylight/master/dist/jquerylight.min.js"></script>
+    <style media="screen">
+    .btn-group{
+        text-align: center;
+    }
+    .btn-group button{
+        display: inline;
+        padding: 0.1em;
+    }
+    </style>
 </head>
 <body>
     <div class="c">
