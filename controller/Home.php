@@ -6,6 +6,10 @@ use Basic\Auth;
 
 class Home
 {
+    public function index($method)
+    {
+        $this->get();
+    }
     public function get()
     {
         /*VARs*/
