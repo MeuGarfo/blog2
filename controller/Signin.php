@@ -6,6 +6,14 @@ use Basic\View;
 
 class Signin
 {
+    public function index($method)
+    {
+        if ($method=='POST') {
+            $this->post();
+        } else {
+            $this->get();
+        }
+    }
     public function get()
     {
         /*VARs*/
