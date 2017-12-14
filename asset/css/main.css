@@ -2,7 +2,7 @@
 img{
     max-width: calc(100% - 20px);
 }
-input,select{
+button,input,select{
     margin:0;
     margin-bottom:0.5em;
 }
