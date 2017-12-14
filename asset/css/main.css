@@ -57,3 +57,9 @@ img{
     overflow-y: scroll;
     margin-top: 1em;
 }
+/*fix by http://browserhacks.com*/
+@supports (-moz-appearance:meterbar) {
+    #editor{
+        width:calc(100% - 1em);
+    }
+}
