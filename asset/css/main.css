@@ -2,6 +2,9 @@
 img{
     max-width: calc(100% - 20px);
 }
+input{
+    margin-bottom:0.5em;
+}
 /*Classes*/
 .btn-group{
     text-align: center;
