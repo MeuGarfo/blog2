@@ -1,3 +1,21 @@
+/*Tags*/
+img{
+    max-width: calc(100% - 20px);
+}
+/*Classes*/
+.btn-group{
+    text-align: center;
+}
+.btn-group button{
+    display: inline;
+    padding: 0.1em;
+}
+.hide{
+    display: none;
+}
+.nav a small{
+    color:#333;
+}
 .post > .content{
     margin-top: 1em;
 }
@@ -9,20 +27,6 @@
     border: 1px solid #ccc;
     border: 1px solid rgba(0,0,0,0.2);
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-#editor{
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-.hide{
-    display: none;
-}
-img{
-    max-width: calc(100% - 20px);
-}
-/*Classes*/
-.nav a small{
-    color:#333;
 }
 .responsive{
     display: block;
@@ -49,5 +53,7 @@ img{
 /*IDs*/
 #editor{
     height: 325px;
+    overflow-x: hidden;
+    overflow-y: scroll;
     margin-top: 1em;
 }
