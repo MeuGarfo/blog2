@@ -1,0 +1,20 @@
+.post > .content{
+    margin-top: 1em;
+}
+.post > .content > img, #editor > img{
+    display: block;
+    margin:0 auto;
+    padding: 4px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+#editor{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#editor{
+    height: 175px;
+    margin-top: 1em;
+}
