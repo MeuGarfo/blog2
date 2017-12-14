@@ -52,7 +52,7 @@ img{
 }
 /*IDs*/
 #editor{
-    height: 325px;
+    height: 300px;
     overflow-x: hidden;
     overflow-y: scroll;
     margin-top: 1em;
