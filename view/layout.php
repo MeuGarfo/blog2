@@ -5,7 +5,7 @@
     <title><?php print $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.rawgit.com/mushape/1k/7d47b0f/dist/1k.min.css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/aicoutos/blog/70b3cd0/asset/css/main.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/aicoutos/blog/f9138d6/asset/css/main.css">
     <script src="https://cdn.rawgit.com/jquerylight/jquerylight/master/dist/jquerylight.min.js"></script>
     <script src="https://cdn.rawgit.com/aicoutos/blog/master/asset/js/main.js"></script>
 </head>
