@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.rawgit.com/mushape/1k/7d47b0f/dist/1k.min.css">
     <script src="https://cdn.rawgit.com/jquerylight/jquerylight/master/dist/jquerylight.min.js"></script>
+<script src="https://cdn.rawgit.com/aicoutos/84394479ce30c0a7fc40df8aa8801286/raw/74232b756aa3dca0d7dced6d7125771f4060332a/editor.js"></script>
     <style media="screen">
     .btn-group{
         text-align: center;

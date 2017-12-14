@@ -1,4 +1,4 @@
-<form class="" action="/posts?create" method="post" id="postCreate">>
+<form class="" action="/posts?create" method="post" id="postCreate">
     <input type="text" name="title" placeholder="Título" id="postTitle">
     <select name="category_id">
         <option value="1">Post</option>
