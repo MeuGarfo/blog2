@@ -60,6 +60,6 @@ img{
 /*fix by http://browserhacks.com*/
 @supports (-moz-appearance:meterbar) {
     #editor{
-        width:calc(100% - 38px);
+        width:calc(100% - 38px -1em);
     }
 }
