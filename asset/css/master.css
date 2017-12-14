@@ -14,6 +14,29 @@
     overflow-x: hidden;
     overflow-y: scroll;
 }
+.hide{
+    display: none;
+}
+img{
+    max-width: calc(100% - 20px);
+}
+/*eitah*/
+.nav a small{
+    color:#333;
+}
+.responsive{
+    display: block;
+    overflow-x:auto;
+    width: 100%;
+}
+.responsive table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+.responsive th,.responsive td {
+    text-align: left;
+}
 #editor{
     height: 175px;
     margin-top: 1em;
