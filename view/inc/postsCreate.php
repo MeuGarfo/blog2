@@ -21,8 +21,6 @@
     </select>
     <input type="submit" value="Criar artigo" tabindex="3">
 </form>
-<!-- <script src="/file/js/main.js"></script>
-<script src="/file/js/jquerylight.js"></script> -->
 <script type="text/javascript">
 $(function(){
     $('#title').focus();
