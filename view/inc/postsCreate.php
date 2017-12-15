@@ -17,12 +17,12 @@
     <input type="hidden" name="content" id="content">
     <select name="online">
         <option value="1" selected>Online</option>
-        <option value="0" selected>Offline</option>
+        <option value="0">Offline</option>
     </select>
     <input type="submit" value="Criar artigo" tabindex="3">
 </form>
-<script src="/file/js/main.js"></script>
-<script src="/file/js/jquerylight.js"></script>
+<!-- <script src="/file/js/main.js"></script>
+<script src="/file/js/jquerylight.js"></script> -->
 <script type="text/javascript">
 $(function(){
     $('#title').focus();
