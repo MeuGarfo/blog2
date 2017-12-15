@@ -24,7 +24,7 @@ class Posts
     }
     public function post($slug=null)
     {
-        if (is_null($slug) && isset($_POST['create'])) {
+        if (is_null($slug) && isset($_GET['create'])) {
             $this->postCreate();
         }
     }
