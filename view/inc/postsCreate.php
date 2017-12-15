@@ -1,8 +1,6 @@
 <form class="" action="/posts?create" method="post" id="postCreate">
     <input class="span12" type="text" name="title" id="title" tabindex="1" value="">
-    <select class="span12" id="category_id" name="category_id">
-        <option value="1">Super</option>
-    </select>
+    <input type="hidden" name="category_id" value="1">
     <div class="btn-group" id="toolbar">
         <button class="btn" type="button" id="h2" onclick="editor(this.id)">h2</button>
         <button class="btn" type="button" id="h3" onclick="editor(this.id)">h3</button>
