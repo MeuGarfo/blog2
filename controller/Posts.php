@@ -17,18 +17,18 @@ class Posts
     public function get($slug=null)
     {
         if (is_null($slug) && isset($_GET['create'])) {
-            $this->create();
+            $this->getCreate();
         } else {
             $this->showAll($slug);
         }
     }
-    public function post()
+    public function post($slug=null)
     {
         if (is_null($slug) && isset($_POST['create'])) {
-            $this->create();
+            $this->postCreate();
         }
     }
-    public function create()
+    public function getCreate()
     {
         /*VARs*/
         $db=require_once ROOT.'db.php';
@@ -41,6 +41,10 @@ class Posts
         } else {
             $data['view']->redirect('/signin');
         }
+    }
+    public function postCreate()
+    {
+        print 'post create';
     }
     public function showAll($slug)
     {
