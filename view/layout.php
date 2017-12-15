@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <title><?php print $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/mushape/1k/<?php print $_ENV['1k_css'];?>/dist/1k.min.css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/aicoutos/blog/<?php print $_ENV['main_css'];?>/asset/css/main.css">
-    <script src="https://cdn.rawgit.com/jquerylight/jquerylight/<?php print $_ENV['main_js'];?>/dist/jquerylight.min.js"></script>
-    <script src="https://cdn.rawgit.com/aicoutos/blog/<?php print $_ENV['main_css'];?>/asset/js/main.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/mushape/1k/<?php print $_ENV['1k'];?>/dist/1k.min.css">
+    <link rel="stylesheet" href="/file/css/main.css">
 </head>
 <body>
     <div class="c">

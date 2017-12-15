@@ -44,7 +44,26 @@ class Posts
     }
     public function postCreate()
     {
-        print 'post create';
+        /*VARs*/
+        $db=require_once ROOT.'db.php';
+        $auth=new Auth($db);
+        $data['user']=$auth->isAuth();
+        $data['view']=new View();
+        $post=$_POST;
+        $data['user']=$auth->isAuth();
+        $post['user_id']=$data['user']['id'];
+        $post['created_at']=time();
+        $post['updated_at']=time();
+        /*RULEs*/
+        $post['slug']=$data['view']->slug($post['title']);
+        if ($data['user']) {
+            $db->insert('posts', $post);
+            $id=$db->id();
+            $url='/posts/'.$post['slug'].'/'.$id;
+            $data['view']->redirect($url);
+        } else {
+            $data['view']->redirect('/signin', $data);
+        }
     }
     public function showAll($slug)
     {
