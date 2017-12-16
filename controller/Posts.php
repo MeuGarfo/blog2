@@ -6,15 +6,19 @@ use Basic\View;
 
 class Posts
 {
+    public $view;
+    public $db;
     public function index($method)
     {
+        $this->view=new View();
+        $this->db=require_once ROOT.'db.php';
         if ($method=='POST') {
             $this->post();
         } else {
             $this->get();
         }
     }
-    public function get($slug=null)
+    public function get($slug=null, $id=null)
     {
         if (is_null($slug) && isset($_GET['create'])) {
             $this->getCreate();
@@ -31,10 +35,9 @@ class Posts
     public function getCreate()
     {
         /*VARs*/
-        $db=require_once ROOT.'db.php';
-        $auth=new Auth($db);
+        $auth=new Auth($this->db);
         $data['user']=$auth->isAuth();
-        $data['view']=new View();
+        $data['view']=$this->view;
         /*RULEs*/
         if ($data['user']) {
             $data['view']->view('posts/create', $data);
@@ -45,10 +48,9 @@ class Posts
     public function postCreate()
     {
         /*VARs*/
-        $db=require_once ROOT.'db.php';
-        $auth=new Auth($db);
+        $auth=new Auth($this->db);
         $data['user']=$auth->isAuth();
-        $data['view']=new View();
+        $data['view']=$this->view;
         $post=$_POST;
         $data['user']=$auth->isAuth();
         $post['user_id']=$data['user']['id'];
@@ -57,8 +59,8 @@ class Posts
         /*RULEs*/
         $post['slug']=$data['view']->slug($post['title']);
         if ($data['user']) {
-            $db->insert('posts', $post);
-            $id=$db->id();
+            $this->db->insert('posts', $post);
+            $id=$this->db->id();
             $url='/posts/'.$post['slug'].'/'.$id;
             $data['view']->redirect($url);
         } else {
@@ -68,19 +70,17 @@ class Posts
     public function showAll($slug)
     {
         /*VARs*/
-        $db=require_once ROOT.'db.php';
-        $auth=new Auth($db);
-        $view=new View();
+        $auth=new Auth($this->db);
         $data['user']=$auth->isAuth();
         if ($data['user']) {
-            $data['view']=$view;
+            $data['view']=$this->view;
             /*RULEs*/
             if (is_null($slug) && $auth->isAuth()) {
                 $where=[
                     "id[>=]" => 1
                 ];
-                $data['posts']=$db->select('posts', '*', $where);
-                $view->view('posts/showAll', $data);
+                $data['posts']=$this->db->select('posts', '*', $where);
+                $this->view->view('posts/showAll', $data);
             }
         } else {
             $view->redirect('/signin');
