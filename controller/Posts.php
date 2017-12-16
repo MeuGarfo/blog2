@@ -31,25 +31,9 @@ class Posts
         if (isset($_GET['create'])) {
             $this->getCreate();
         } elseif ($this->slug && $this->id) {
-            $this->getPosts($this->slug, $this->id);
+            $this->getRead($this->slug, $this->id);
         } else {
             $this->showAll($slug);
-        }
-    }
-    public function getPosts($slug, $id)
-    {
-        /*VARs*/
-        $where['AND']=[
-            'id'=>$this->id,
-            'slug'=>$this->slug
-        ];
-        $data['user']=$this->auth->isAuth();
-        $data['posts']=$this->db->get('posts', '*', $where);
-        /*RULEs*/
-        if ($data['posts']) {
-            $this->view->out('posts/read', $data);
-        } else {
-            $this->view->out('404');
         }
     }
     public function post($slug=null)
@@ -68,6 +52,23 @@ class Posts
             $data['view']->view('posts/create', $data);
         } else {
             $data['view']->redirect('/signin');
+        }
+    }
+    public function getRead($slug, $id)
+    {
+        /*VARs*/
+        $where['AND']=[
+            'id'=>$this->id,
+            'slug'=>$this->slug
+        ];
+        $data['user']=$this->auth->isAuth();
+        $data['post']=$this->db->get('posts', '*', $where);
+        $data['view']=$this->view;
+        /*RULEs*/
+        if ($data['post']) {
+            $this->view->out('posts/read', $data);
+        } else {
+            $this->view->out('404');
         }
     }
     public function postCreate()
