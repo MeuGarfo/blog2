@@ -8,22 +8,48 @@ class Posts
 {
     public $view;
     public $db;
+    public $slug;
+    public $id;
+    public $auth;
     public function index($method)
     {
         $this->view=new View();
         $this->db=require_once ROOT.'db.php';
+        $this->auth=new Auth($this->db);
         if ($method=='POST') {
             $this->post();
         } else {
             $this->get();
         }
     }
-    public function get($slug=null, $id=null)
+    public function get()
     {
-        if (is_null($slug) && isset($_GET['create'])) {
+        /*VARs*/
+        $this->slug=$this->view->segment(1);
+        $this->id=$this->view->segment(2);
+        /*RULEs*/
+        if (isset($_GET['create'])) {
             $this->getCreate();
+        } elseif ($this->slug && $this->id) {
+            $this->getPosts($this->slug, $this->id);
         } else {
             $this->showAll($slug);
+        }
+    }
+    public function getPosts($slug, $id)
+    {
+        /*VARs*/
+        $where['AND']=[
+            'id'=>$this->id,
+            'slug'=>$this->slug
+        ];
+        $data['user']=$this->auth->isAuth();
+        $data['posts']=$this->db->get('posts', '*', $where);
+        /*RULEs*/
+        if ($data['posts']) {
+            $this->view->out('posts/read', $data);
+        } else {
+            $this->view->out('404');
         }
     }
     public function post($slug=null)
@@ -35,8 +61,7 @@ class Posts
     public function getCreate()
     {
         /*VARs*/
-        $auth=new Auth($this->db);
-        $data['user']=$auth->isAuth();
+        $data['user']=$this->auth->isAuth();
         $data['view']=$this->view;
         /*RULEs*/
         if ($data['user']) {
