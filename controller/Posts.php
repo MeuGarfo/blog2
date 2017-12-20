@@ -29,11 +29,14 @@ class Posts
         $this->id=$this->view->segment(2);
         /*RULEs*/
         if (isset($_GET['create'])) {
+            //mostra a tela de criação de posts
             $this->getCreate();
         } elseif ($this->slug && $this->id) {
+            //mostra um post
             $this->getRead($this->slug, $this->id);
         } else {
-            $this->showAll($slug);
+            //mostra todos posts
+            $this->showAll();
         }
     }
     public function post($slug=null)
@@ -93,7 +96,7 @@ class Posts
             $data['view']->redirect('/signin', $data);
         }
     }
-    public function showAll($slug)
+    public function showAll()
     {
         /*VARs*/
         $auth=new Auth($this->db);
@@ -101,7 +104,7 @@ class Posts
         if ($data['user']) {
             $data['view']=$this->view;
             /*RULEs*/
-            if (is_null($slug) && $auth->isAuth()) {
+            if ($auth->isAuth()) {
                 $where=[
                     "id[>=]" => 1
                 ];
