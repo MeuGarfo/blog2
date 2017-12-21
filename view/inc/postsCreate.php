@@ -1,5 +1,10 @@
-<form action="/posts/?create" method="post" id="postCreate">
-    <input type="text" name="title" id="title" tabindex="1" value="">
+<form action="/posts/?<?php print $method; ?>" method="post" id="postCreate">
+    <?php
+    if ($method=='update') {
+        print '<input type="hidden" name="id" value="'.$post['id'].'" />';
+    }
+    ?>
+    <input type="text" name="title" id="title" tabindex="1" value="<?php print @$post['title']; ?>">
     <input type="hidden" name="category_id" value="1">
     <div class="btn-group" id="toolbar">
         <button type="button" id="h2" onclick="editor(this.id)">h2</button>
@@ -13,13 +18,17 @@
         <button type="button" id="CreateTable" onclick="editor(this.id)">table</button>
         <button type="button" id="html" onclick="editor(this.id)">html</button>
     </div>
-    <div class="well" id="editor" contenteditable="true" tabindex="2"></div>
+    <div class="well" id="editor" contenteditable="true" tabindex="2"><?php print @$post['content'];?></div>
     <input type="hidden" name="content" id="content">
     <select name="online">
-        <option value="1" selected>Online</option>
-        <option value="0">Offline</option>
-    </select>
-    <input type="submit" value="Criar artigo" tabindex="3">
+        <option value="1" <?php if (@$post['online']=='1') {
+        print 'selected';
+    } ?>>Online</option>
+        <option value="0" <?php if (@$post['online']=='0') {
+        print 'selected';
+    } ?>>Offline</option>
+    </select><br>
+    <input type="submit" value="<?php print $title; ?>" tabindex="3">
 </form>
 <script type="text/javascript">
 $(function(){

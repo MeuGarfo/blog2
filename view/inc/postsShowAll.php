@@ -4,7 +4,7 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
     print '<ul>';
     foreach ($posts as $post) {
         $postRead='/posts/'.$post['slug'].'/'.$post['id'];
-        $postUpdate='javascript:postUpdate(\''.$post['id'].'\');';
+        $postUpdate=$postRead.'?update';
         $postDelete='javascript:postDelete(\''.$post['id'].'\');';
         print '<li>';
         print '<a href="'.$postUpdate.'">Editar</a> |';

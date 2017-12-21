@@ -25,24 +25,33 @@ class Posts
     public function get()
     {
         /*VARs*/
-        $this->slug=$this->view->segment(1);
+        $this->slug=urldecode($this->view->segment(1));
         $this->id=$this->view->segment(2);
         /*RULEs*/
         if (isset($_GET['create'])) {
             //mostra a tela de criação de posts
             $this->getCreate();
-        } elseif ($this->slug && $this->id) {
-            //mostra um post
-            $this->getRead($this->slug, $this->id);
+        } elseif (isset($_GET['update']) && $this->slug && $this->id) {
+            //mostra a tela de edição de posts
+            $this->getUpdate();
         } else {
-            //mostra todos posts
-            $this->showAll();
+            if ($this->slug && $this->id) {
+                //mostra um post
+                $this->getRead();
+            } else {
+                //mostra todos posts
+                $this->showAll();
+            }
         }
     }
-    public function post($slug=null)
+    public function post()
     {
-        if (is_null($slug) && isset($_GET['create'])) {
+        if (isset($_GET['create'])) {
             $this->postCreate();
+        } elseif (isset($_GET['update'])) {
+            $this->postUpdate();
+        } else {
+            $this->view->out('404');
         }
     }
     public function getCreate()
@@ -50,6 +59,7 @@ class Posts
         /*VARs*/
         $data['user']=$this->auth->isAuth();
         $data['view']=$this->view;
+        $data['method']='create';
         /*RULEs*/
         if ($data['user']) {
             $data['view']->view('posts/create', $data);
@@ -57,7 +67,7 @@ class Posts
             $data['view']->redirect('/signin');
         }
     }
-    public function getRead($slug, $id)
+    public function getRead()
     {
         /*VARs*/
         $where['AND']=[
@@ -68,10 +78,32 @@ class Posts
         $data['post']=$this->db->get('posts', '*', $where);
         $data['view']=$this->view;
         /*RULEs*/
-        if ($data['post']) {
+        if ($data['post'] && @$data['post']['online']=='1') {
             $this->view->out('posts/read', $data);
         } else {
             $this->view->out('404');
+        }
+    }
+    public function getUpdate()
+    {
+        /*VARs*/
+        $where['AND']=[
+            'id'=>$this->id,
+            'slug'=>$this->slug
+        ];
+        $data['user']=$this->auth->isAuth();
+        $data['post']=$this->db->get('posts', '*', $where);
+        $data['view']=$this->view;
+        $data['method']='update';
+        /*RULEs*/
+        if ($data['user']) {
+            if ($data['post']) {
+                $this->view->out('posts/create', $data);
+            } else {
+                $this->view->out('404');
+            }
+        } else {
+            $this->view->redirect('/signin');
         }
     }
     public function postCreate()
@@ -94,6 +126,27 @@ class Posts
             $data['view']->redirect($url);
         } else {
             $data['view']->redirect('/signin', $data);
+        }
+    }
+    public function postUpdate()
+    {
+        /*VARs*/
+        $post=$_POST;
+        $post['slug']=$this->view->slug($post['title']);
+        $post['updated_at']=time();
+        $where=['id'=>$post['id']];
+        $data['user']=$this->auth->isAuth();
+        /*RULEs*/
+        if ($data['user']) {
+            $this->db->update('posts', $post, $where);
+            if ($post['online']=='1') {
+                $url='/posts/'.$post['slug'].'/'.$post['id'];
+                $this->view->redirect($url);
+            } else {
+                $this->view->redirect('/posts');
+            }
+        } else {
+            $this->view->redirect('/signin');
         }
     }
     public function showAll()
