@@ -8,7 +8,7 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
         $postDelete='javascript:postDelete(\''.$post['id'].'\');';
         print '<li>';
         print '<a href="'.$postUpdate.'">Editar</a> |';
-        print ' <a href="'.$postDelete.'">Apagar</a> |';
+        print ' <a class="postDeleteLink" href="'.$postDelete.'">Apagar</a> |';
         print ' <a href="'.$postRead.'">'.$post['title'].'</a>';
         print '</li>';
     }
@@ -18,6 +18,10 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
 }
 ?>
 <script type="text/javascript">
-var data={'id':12};
-var out=$().ajax('/','GET',data);
+function postDelete(id){
+    var url='/posts/'+id+'?delete';
+    $.post(url, function(data, status){
+        alert("Data: " + data.out + "\nStatus: " + status);
+    });
+}
 </script>

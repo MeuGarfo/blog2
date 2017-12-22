@@ -13,9 +13,13 @@ class Posts
     public $auth;
     public function index($method)
     {
+        /*VARs*/
         $this->view=new View();
         $this->db=require_once ROOT.'db.php';
         $this->auth=new Auth($this->db);
+        $this->slug=urldecode($this->view->segment(1));
+        $this->id=$this->view->segment(2);
+        /*RULEs*/
         if ($method=='POST') {
             $this->post();
         } else {
@@ -24,10 +28,6 @@ class Posts
     }
     public function get()
     {
-        /*VARs*/
-        $this->slug=urldecode($this->view->segment(1));
-        $this->id=$this->view->segment(2);
-        /*RULEs*/
         if (isset($_GET['create'])) {
             //mostra a tela de criação de posts
             $this->getCreate();
@@ -50,6 +50,8 @@ class Posts
             $this->postCreate();
         } elseif (isset($_GET['update'])) {
             $this->postUpdate();
+        } elseif (isset($_GET['delete'])) {
+            $this->postDelete();
         } else {
             $this->view->out('404');
         }
@@ -149,11 +151,23 @@ class Posts
             $this->view->redirect('/signin');
         }
     }
+    public function postDelete()
+    {
+        //variaveis
+        $user=$this->auth->isAuth();
+        $postID=$this->slug;
+        $where=['id'=>$postID];
+        $post=$this->db->get("posts", "*", $where);
+        //regras
+        if ($post && @$user['id']==$post['user_id']) {
+            $this->db->delete('posts', $where);
+        }
+        $this->view->json(['response'=>'ok']);
+    }
     public function showAll()
     {
         /*VARs*/
-        $auth=new Auth($this->db);
-        $data['user']=$auth->isAuth();
+        $data['user']=$this->auth->isAuth();
         if ($data['user']) {
             $data['view']=$this->view;
             /*RULEs*/
@@ -162,7 +176,7 @@ class Posts
                     "id[>=]" => 1
                 ];
                 $data['posts']=$this->db->select('posts', '*', $where);
-                $this->view->view('posts/showAll', $data);
+                $this->view->view('posts/showAll', $this->slug);
             }
         } else {
             $view->redirect('/signin');
