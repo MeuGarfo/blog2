@@ -15,7 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "1k": "2.0.1",
-    "jquerylight": "0.1.0"
+    "1k": "2.0.1"
   }
 }

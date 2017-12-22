@@ -17,3 +17,7 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
     print 'Nenhum post encontrado';
 }
 ?>
+<script type="text/javascript">
+var data={'id':12};
+var out=$().ajax('/','GET',data);
+</script>

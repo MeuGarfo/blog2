@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/asset/bower_components/1k/dist/1k.min.css">
     <link rel="stylesheet" href="/asset/css/main.css">
     <script src="/asset/js/main.js"></script>
-    <script src="/asset/bower_components/jquerylight/dist/jquerylight.min.js"></script>
+    <script src="/asset/js/zepto.min.js"></script>
 </head>
 <body>
     <div class="c">
