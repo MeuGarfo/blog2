@@ -171,12 +171,12 @@ class Posts
         if ($data['user']) {
             $data['view']=$this->view;
             /*RULEs*/
-            if ($auth->isAuth()) {
+            if ($this->auth->isAuth()) {
                 $where=[
                     "id[>=]" => 1
                 ];
                 $data['posts']=$this->db->select('posts', '*', $where);
-                $this->view->view('posts/showAll', $this->slug);
+                $this->view->out('posts/showAll', $data);
             }
         } else {
             $view->redirect('/signin');

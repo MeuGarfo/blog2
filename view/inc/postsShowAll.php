@@ -15,13 +15,16 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
     print '</ul>';
 } else {
     print 'Nenhum post encontrado';
+    var_dump($posts);
 }
 ?>
 <script type="text/javascript">
 function postDelete(id){
     var url='/posts/'+id+'?delete';
-    $.post(url, function(data, status){
-        alert("Data: " + data.out + "\nStatus: " + status);
-    });
+    if(confirm("Deseja realmente apagar o post "+id+"?")){
+        $.post(url, function(data, status){
+            window.location.href = '/posts';
+        });
+    }
 }
 </script>
