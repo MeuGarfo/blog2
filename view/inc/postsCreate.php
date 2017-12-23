@@ -29,7 +29,7 @@
     } ?>>Offline</option>
     </select>
     <div class="btn-group">
-    <input type="submit" value="<?php print $title; ?>" tabindex="3">
+        <input type="submit" value="<?php print $title; ?>" tabindex="3">
     </div>
 
 </form>
