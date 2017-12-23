@@ -27,8 +27,11 @@
         <option value="0" <?php if (@$post['online']=='0') {
         print 'selected';
     } ?>>Offline</option>
-    </select><br>
+    </select>
+    <div class="btn-group">
     <input type="submit" value="<?php print $title; ?>" tabindex="3">
+    </div>
+
 </form>
 <script type="text/javascript">
 $(function(){
