@@ -4,32 +4,30 @@ namespace app\controller;
 use Basic\View;
 use Basic\Auth;
 
-class Home
+class Logout
 {
     public $db;
     public $auth;
     public $view;
+    public $user;
     public function index($method)
     {
         $this->db=require_once ROOT.'db.php';
         $this->auth=new Auth($this->db);
         $this->view=new View();
+        $this->user=$this->auth->isAuth();
         $this->get();
     }
     public function get()
     {
         /*VARs*/
-
-        $where=[
-            'id[>]'=>0
-        ];
-        $messages=$this->db->select('messages', '*', $where);
-        $data=[
-            'view'=>$this->view,
-            'messages'=>$messages,
-            'user'=>$this->auth->isAuth()
-        ];
+        $token=@$_GET['token'];
         /*RULEs*/
-        $this->view->out('home/read', $data);
+        if ($this->user && $this->user['token']==$token) {
+            $this->auth->logout();
+            $this->view->redirect('/signin');
+        } else {
+            $this->view->out('404');
+        }
     }
 }

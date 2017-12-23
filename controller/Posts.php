@@ -11,6 +11,7 @@ class Posts
     public $slug;
     public $id;
     public $auth;
+    public $user;
     public function index($method)
     {
         /*VARs*/
@@ -18,6 +19,7 @@ class Posts
         $this->db=require_once ROOT.'db.php';
         $this->auth=new Auth($this->db);
         $this->slug=urldecode($this->view->segment(1));
+        $this->user=$this->auth->isAuth();
         $this->id=$this->view->segment(2);
         /*RULEs*/
         if ($method=='POST') {
@@ -179,7 +181,7 @@ class Posts
                 $this->view->out('posts/showAll', $data);
             }
         } else {
-            $view->redirect('/signin');
+            $this->view->redirect('/signin');
         }
     }
 }

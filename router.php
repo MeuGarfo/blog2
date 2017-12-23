@@ -8,14 +8,19 @@ switch (@$segment[0]) {
     $controller=new app\controller\Home();
     $controller->index($method);
     break;
-    /*signin*/
-    case 'signin':
-    $controller=new app\controller\Signin();
+    /*logout*/
+    case 'logout':
+    $controller=new app\controller\Logout();
     $controller->index($method);
     break;
     /*posts*/
     case 'posts':
     $controller=new app\controller\Posts();
+    $controller->index($method);
+    break;
+    /*signin*/
+    case 'signin':
+    $controller=new app\controller\Signin();
     $controller->index($method);
     break;
     /*404*/

@@ -18,7 +18,13 @@
         </div>
         <div class="r">
             <div class="g3">
-                left
+                <?php
+                if (isset($user) && is_array($user)) {
+                    $view->out('inc/leftAuthPrivate', $data);
+                } else {
+                    $view->out('inc/leftAuthPublic', $data);
+                }
+                ?>
             </div>
             <div class="g6">
                 <?php print $content; ?>
