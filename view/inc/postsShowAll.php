@@ -9,8 +9,13 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
         print '<li>';
         print '<a href="'.$postUpdate.'">Editar</a> |';
         print ' <a class="postDeleteLink" href="'.$postDelete.'">Apagar</a> |';
+        if ($post['online']) {
+            print ' <b class="green">ON</b> |';
+        } else {
+            print ' <b class="red">OFF</b> |';
+        }
         print ' <a href="'.$postRead.'">'.$post['title'].'</a>';
-        print '</li>';
+        print '</li>'.PHP_EOL;
     }
     print '</ul>';
 } else {

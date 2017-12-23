@@ -12,7 +12,7 @@
 <body>
     <div class="c">
         <div class="r">
-            <div class="g12">
+            <div class="g12 center">
                 <h1>Blog</h1>
             </div>
         </div>
