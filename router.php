@@ -8,6 +8,11 @@ switch (@$segment[0]) {
     $controller=new app\controller\Feeds();
     $controller->index($method);
     break;
+    /*files*/
+    case 'files':
+    $controller=new app\controller\Files();
+    $controller->index($method);
+    break;
     /*home*/
     case '/':
     $controller=new app\controller\Home();
