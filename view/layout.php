@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/asset/css/main.css">
     <script src="/asset/js/main.js"></script>
     <script src="/asset/js/zepto.min.js"></script>
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed/" /><
 </head>
 <body>
     <div class="c">
