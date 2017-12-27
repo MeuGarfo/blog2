@@ -1,8 +1,7 @@
 <?php
 $data['title']='Sucesso';
 $data['content']=<<<heredoc
-<h2>Sucesso</h2>
-<p>Seu arquivo foi enviado com sucesso</p>
+<h2>{$data['title']}</h2>
 <p><a href="{$file}">{$file}</a></p>
 heredoc;
 $view->view('layout', $data);

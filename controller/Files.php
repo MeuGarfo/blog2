@@ -89,10 +89,14 @@ class Files
             print '<pre>';
             print_r($file['error']);
         } else {
-            print 'arquivo enviado com sucesso<br>';
             $destination=ROOT.'file/'.$file['name'];
             $upload->move($file['temp'], $destination);
-            print $_ENV['site_url'].'/file/'.$file['name'];
+            $data=[
+                'file'=>$_ENV['site_url'].'/file/'.$file['name'],
+                'user'=>$this->user,
+                'view'=>$this->view
+            ];
+            $this->view->out('files/uploadOk', $data);
         }
     }
     public function postDelete()
