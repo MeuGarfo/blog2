@@ -1,34 +1,28 @@
-<h2>Posts</h2>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filtrar pelo titulo">
+<h2>Arquivos</h2>
+<p><a href="/files?create">Enviar arquivo</a></p>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filtrar pelo nome">
 <?php
-if (isset($posts) && is_array($posts) && count($posts)>0) {
+if (isset($files) && is_array($files) && count($files)>0) {
     print '<ul id="myUL">';
-    foreach ($posts as $post) {
-        $postRead='/posts/'.$post['slug'].'/'.$post['id'];
-        $postUpdate=$postRead.'?update';
-        $postDelete='javascript:postDelete(\''.$post['id'].'\');';
+    foreach ($files as $key=>$file) {
+        $fileRead='/file/'.$file;
+        $fileDelete='javascript:postDelete(\''.$file.'\');';
         print '<li>';
-        print '<a href="'.$postUpdate.'">Editar</a> |';
-        print ' <a class="postDeleteLink" href="'.$postDelete.'">Apagar</a> |';
-        if ($post['online']) {
-            print ' <b class="green">ON</b> |';
-        } else {
-            print ' <b class="red">OFF</b> |';
-        }
-        print ' <a href="'.$postRead.'">'.$post['title'].'</a>';
+        print ' <a class="fileDeleteLink" href="'.$fileDelete.'">Apagar</a> |';
+        print ' <a href="'.$fileRead.'">'.$file.'</a>';
         print '</li>'.PHP_EOL;
     }
     print '</ul>';
 } else {
-    print 'Nenhum post encontrado';
+    print 'Nenhum arquivo encontrado';
 }
 ?>
 <script type="text/javascript">
 function postDelete(id){
-    var url='/posts/'+id+'?delete';
+    var url='/files/'+id+'?delete';
     if(confirm("Deseja realmente apagar o post "+id+"?")){
         $.post(url, function(data, status){
-            window.location.href = '/posts';
+            window.location.href = '/files';
         });
     }
 }

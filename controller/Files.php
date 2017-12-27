@@ -27,6 +27,8 @@ class Files
     {
         if (isset($_GET['create']) && $this->user) {
             $this->getCreate();
+        } else {
+            $this->getShowAll();
         }
     }
     public function getCreate()
@@ -38,6 +40,26 @@ class Files
         ];
         /*RULEs*/
         $this->view->out('files/create', $data);
+    }
+    public function getShowAll()
+    {
+        /*VARs*/
+        $dir=ROOT.'file';
+        $ignored = array('.', '..', '.svn', '.htaccess');
+        $files = array();
+        /*RULEs*/
+        if ($this->user) {
+            foreach (scandir($dir) as $file) {
+                if (in_array($file, $ignored)) {
+                    continue;
+                }
+                $files[$file] = filemtime($dir.$file);
+            }
+            arsort($files);
+            $files = array_keys($files);
+        } else {
+            $this->view->redirect('/signin');
+        }
     }
     public function post()
     {
