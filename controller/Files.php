@@ -71,6 +71,8 @@ class Files
     {
         if (isset($_GET['create']) && $this->user) {
             $this->postCreate();
+        } elseif (isset($_GET['delete'],$_GET['name'])) {
+            $this->postDelete();
         }
     }
     public function postCreate()
@@ -91,6 +93,16 @@ class Files
             $destination=ROOT.'file/'.$file['name'];
             $upload->move($file['temp'], $destination);
             print $_ENV['site_url'].'/file/'.$file['name'];
+        }
+    }
+    public function postDelete()
+    {
+        if ($this->user) {
+            $filename=ROOT.'file/'.$_GET['name'];
+            unlink($filename);
+            $this->view->json(['response'=>'ok']);
+        } else {
+            $this->view->json(['response'=>'error']);
         }
     }
 }
