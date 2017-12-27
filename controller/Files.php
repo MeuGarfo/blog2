@@ -53,10 +53,16 @@ class Files
                 if (in_array($file, $ignored)) {
                     continue;
                 }
-                $files[$file] = filemtime($dir.$file);
+                $files[] = $file;
             }
             arsort($files);
-            $files = array_keys($files);
+            $data=[
+                'files'=>$files,
+                'user'=>$this->user,
+                'view'=>$this->view
+            ];
+            $this->view->out('files/showAll', $data);
+            //var_dump($files);
         } else {
             $this->view->redirect('/signin');
         }

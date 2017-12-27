@@ -7,7 +7,7 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
     foreach ($posts as $post) {
         $postRead='/posts/'.$post['slug'].'/'.$post['id'];
         $postUpdate=$postRead.'?update';
-        $postDelete='javascript:postDelete(\''.$post['id'].'\');';
+        $postDelete='javascript:postDelete(\''.$post['id'].'\',\''.$post['title'].'\');';
         print '<li>';
         print '<a href="'.$postUpdate.'">Editar</a> |';
         print ' <a class="postDeleteLink" href="'.$postDelete.'">Apagar</a> |';
@@ -25,9 +25,9 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
 }
 ?>
 <script type="text/javascript">
-function postDelete(id){
+function postDelete(id,title){
     var url='/posts/'+id+'?delete';
-    if(confirm("Deseja realmente apagar o post "+id+"?")){
+    if(confirm("Apagar o post \""+title+"\"?")){
         $.post(url, function(data, status){
             window.location.href = '/posts';
         });

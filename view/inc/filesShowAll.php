@@ -20,7 +20,7 @@ if (isset($files) && is_array($files) && count($files)>0) {
 <script type="text/javascript">
 function postDelete(name){
     var url='/files?name='+name+'&delete';
-    if(confirm("Deseja realmente apagar o arquivo "+name+"?")){
+    if(confirm("Apagar o arquivo \""+name+"\"?")){
         $.post(url, function(data, status){
             window.location.href = '/files';
         });
