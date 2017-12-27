@@ -1,5 +1,5 @@
 <h2>Posts</h2>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filtrar pelo titulo">
 <?php
 if (isset($posts) && is_array($posts) && count($posts)>0) {
     print '<ul id="myUL">';
@@ -34,6 +34,7 @@ function postDelete(id){
     }
 }
 function myFunction() {
+    //https://www.w3schools.com/howto/howto_js_filter_lists.asp
     // Declare variables
     var input, filter, ul, li, a, i;
     input = document.getElementById('myInput');
