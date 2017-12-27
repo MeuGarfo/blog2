@@ -34,15 +34,28 @@ class Feeds
         ->pubDate(strtotime('Tue, 21 Aug 2012 19:50:37 +0900'))
         ->ttl(60)
         ->appendTo($feed);
-        $item = new Item();
-        $item
-        ->title('Blog Entry Title')
-        ->description('<div>Blog body</div>')
-        ->contentEncoded('<div>Blog body</div>')
-        ->url('http://blog.example.com/2012/08/21/blog-entry/')
-        ->pubDate(strtotime('Tue, 21 Aug 2012 19:50:37 +0900'))
-        ->appendTo($channel);
+        $where['AND']=[
+            "id[>=]" => 1,
+            "online"=>1
+        ];
+        $where['LIMIT']=20;
+        $where['ORDER']=[
+            'created_at'=>'DESC'
+        ];
+        $posts=$this->db->select("posts", "*", $where);
         /*RULEs*/
+        if ($posts) {
+            foreach ($posts as $post) {
+                $postUrl='/posts/'.$post['slug'].'/'.$post['id'];
+                $item = new Item();
+                $item
+                ->title($post['title'])
+                ->description(utf8_encode(strip_tags($post['description'])))
+                ->url($siteUrl.$postUrl)
+                ->pubDate($post['created_at'])
+                ->appendTo($channel);
+            }
+        }
         echo $feed;
     }
 }

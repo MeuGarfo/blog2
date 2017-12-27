@@ -142,6 +142,10 @@ class Posts
         $data['user']=$this->auth->isAuth();
         /*RULEs*/
         if ($data['user']) {
+            $oldPost=$this->db->get('posts', '*', $where);
+            if ($post['online']=='1' && $oldPost['online']=='0') {
+                $post['created_at']=time();
+            }
             $this->db->update('posts', $post, $where);
             if ($post['online']=='1') {
                 $url='/posts/'.$post['slug'].'/'.$post['id'];
