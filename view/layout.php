@@ -9,6 +9,32 @@
     <script src="/asset/js/main.js"></script>
     <script src="/asset/js/zepto.min.js"></script>
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed/" />
+    <meta property="og:site_name" content="<?php print $_ENV['site_name']; ?>">
+    <meta property="og:title" content="<?php print $title; ?>">
+    <meta property="og:url" content="<?php
+    if (isset($post)) {
+        $url=$_ENV['site_url'].'/posts/'.$post['slug'].'/'.$post['id'];
+    } else {
+        $url=$_ENV['site_url'];
+    }
+    print $url;
+    ?>">
+    <meta property="og:description" content="<?php
+    if (isset($post)) {
+        $description=$post['description'];
+    } else {
+        $description=$_ENV['site_description'];
+    }
+    print $description;
+    ?>">
+    <meta property="og:image" content="<?php
+    if (isset($post)) {
+        $cover=$_ENV['site_url'].$post['cover'];
+    } else {
+        $cover=$_ENV['site_url'].$_ENV['site_logo'];
+    }
+    print $cover;
+    ?>">
 </head>
 <body>
     <div class="c">
