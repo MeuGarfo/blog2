@@ -67,7 +67,7 @@ select{
 }
 /*IDs*/
 #editor{
-    height: 275px;
+    height: 200px;
     overflow-x: hidden;
     overflow-y: scroll;
     margin-top: 1em;
