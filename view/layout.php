@@ -29,7 +29,7 @@
     ?>">
     <meta property="og:image" content="<?php
     if (isset($post)) {
-        $cover=$_ENV['site_url'].$post['cover'];
+        $cover=$post['cover'];
     } else {
         $cover=$_ENV['site_url'].$_ENV['site_logo'];
     }

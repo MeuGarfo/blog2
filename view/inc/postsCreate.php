@@ -6,7 +6,7 @@
     ?>
     <input type="text" name="title" id="title" tabindex="1" value="<?php print @$post['title']; ?>" placeholder="Titulo">
     <input type="text" name="description" tabindex="1" value="<?php print @$post['description']; ?>" placeholder="Descrição">
-    <input type="text" name="cover" tabindex="1" value="<?php print @$post['cover']; ?>" placeholder="Imagem de exibição (URLs relativas)">
+    <input type="text" name="cover" tabindex="1" value="<?php print @$post['cover']; ?>" placeholder="Imagem de exibição">
     <input type="hidden" name="category_id" value="1">
     <div class="btn-group" id="toolbar">
         <button type="button" id="h2" onclick="editor(this.id)">h2</button>
