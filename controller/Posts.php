@@ -121,8 +121,8 @@ class Posts
         $post['user_id']=$data['user']['id'];
         $post['created_at']=time();
         $post['updated_at']=time();
-        /*RULEs*/
         $post['slug']=$data['view']->slug($post['title']);
+        /*RULEs*/
         if ($data['user']) {
             $this->db->insert('posts', $post);
             $id=$this->db->id();
@@ -159,12 +159,12 @@ class Posts
     }
     public function postDelete()
     {
-        //variaveis
+        /*VARs*/
         $user=$this->auth->isAuth();
         $postID=$this->slug;
         $where=['id'=>$postID];
         $post=$this->db->get("posts", "*", $where);
-        //regras
+        /*RULEs*/
         if ($post && @$user['id']==$post['user_id']) {
             $this->db->delete('posts', $where);
         }
@@ -174,6 +174,7 @@ class Posts
     {
         /*VARs*/
         $data['user']=$this->auth->isAuth();
+        /*RULEs*/
         if ($data['user']) {
             $data['view']=$this->view;
             /*RULEs*/
