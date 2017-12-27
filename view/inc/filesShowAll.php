@@ -1,4 +1,4 @@
-<h2>Arquivos</h2>
+<h2><?php print $title; ?></h2>
 <p><a href="/files?create">Enviar arquivo</a></p>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filtrar pelo nome">
 <?php
@@ -18,9 +18,9 @@ if (isset($files) && is_array($files) && count($files)>0) {
 }
 ?>
 <script type="text/javascript">
-function postDelete(id){
-    var url='/files/'+id+'?delete';
-    if(confirm("Deseja realmente apagar o post "+id+"?")){
+function postDelete(name){
+    var url='/files?name='+name+'&delete';
+    if(confirm("Deseja realmente apagar o arquivo "+name+"?")){
         $.post(url, function(data, status){
             window.location.href = '/files';
         });
@@ -37,7 +37,7 @@ function myFunction() {
 
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[2];
+        a = li[i].getElementsByTagName("a")[1];
         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
             li[i].style.display = "";
         } else {
