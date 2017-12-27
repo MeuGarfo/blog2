@@ -3,6 +3,11 @@ $view=new Basic\View();
 $segment=$view->segment();
 $method=@$_SERVER['REQUEST_METHOD'];
 switch (@$segment[0]) {
+    /*feed*/
+    case 'feed':
+    $controller=new app\controller\Feeds();
+    $controller->index($method);
+    break;
     /*home*/
     case '/':
     $controller=new app\controller\Home();
