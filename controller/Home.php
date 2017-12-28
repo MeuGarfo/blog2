@@ -23,6 +23,9 @@ class Home
             'id[>]'=>0,
             'online'=>1
         ];
+        $where['ORDER']=[
+        'created_at'=>'DESC'
+        ];
         $posts=$this->db->select('posts', '*', $where);
         $data=[
             'view'=>$this->view,
