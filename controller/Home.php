@@ -19,14 +19,14 @@ class Home
     public function get()
     {
         /*VARs*/
-
-        $where=[
-            'id[>]'=>0
+        $where['AND']=[
+            'id[>]'=>0,
+            'online'=>1
         ];
-        $messages=$this->db->select('messages', '*', $where);
+        $posts=$this->db->select('posts', '*', $where);
         $data=[
             'view'=>$this->view,
-            'messages'=>$messages,
+            'posts'=>$posts,
             'user'=>$this->auth->isAuth()
         ];
         /*RULEs*/

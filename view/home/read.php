@@ -1,6 +1,4 @@
 <?php
 $data['title']='Blog';
-$data['content']=<<<heredoc
-hello world
-heredoc;
+$data['content']=$view->out('inc/homeRead', $data, false);
 $view->view('layout', $data);
