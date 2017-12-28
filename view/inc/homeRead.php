@@ -4,11 +4,11 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
     print '<ul class="lista" id="myUL">';
     foreach ($posts as $post) {
         $postRead='/posts/'.$post['slug'].'/'.$post['id'];
-        $postCreatedAt=strftime("%A, %d de %B de %Y | %H:%M", $post['created_at']);
+        $postCreatedAt=strftime("%A, %d de %B de %Y %H:%M", $post['created_at']);
         $postCreatedAt=ucfirst($postCreatedAt);
         print '<li>';
-        print '<small>'.$postCreatedAt.'</small><br>';
-        print '<a href="'.$postRead.'">'.$post['title'].'</a>';
+        print '<a href="'.$postRead.'"><small>'.$postCreatedAt.'</small><br>';
+        print $post['title'].'</a>';
         print '</li>'.PHP_EOL;
     }
     print '</ul>';

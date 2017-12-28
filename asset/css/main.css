@@ -9,6 +9,9 @@ input,select{
 select{
     width: calc(100% - 8px);
 }
+small{
+    color:gray;
+}
 /*Classes*/
 .btn-group{
     margin-bottom:0.5em;
@@ -26,11 +29,24 @@ select{
     display: none;
 }
 .lista{
-    margin-left: -1em;
+    padding: 0;
 }
 .lista li{
     list-style: none;
     margin-left: 0;
+}
+.lista a{
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+}
+.lista a:hover{
+    background-color: #f6f6f6;
+    border-radius: 5px;
+}
+.lista h2{
+    margin: 0;
+    padding:0;
 }
 .nav a small{
     color:#333;
@@ -84,4 +100,10 @@ select{
     #editor{
         width:calc(100% - 38px - 0.7em);
     }
+}
+/*mobile*/
+@media ( max-width : 1024px) {
+.lista{
+    text-align: center;
+}
 }

@@ -5,7 +5,7 @@ if ($user) {
     $url='/posts/'.$post['slug'].'/'.$post['id'].'?update';
     $updateLink='<a href="'.$url.'">Editar</a> | ';
 }
-$postCreatedAt=strftime("%A, %d de %B de %Y | %H:%M", $post['created_at']);
+$postCreatedAt=strftime("%A, %d de %B de %Y %H:%M", $post['created_at']);
 $postCreatedAt=ucfirst($postCreatedAt);
 $data['content']=<<<heredoc
 
