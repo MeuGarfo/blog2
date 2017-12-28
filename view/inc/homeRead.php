@@ -4,7 +4,8 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
     print '<ul id="myUL">';
     foreach ($posts as $post) {
         $postRead='/posts/'.$post['slug'].'/'.$post['id'];
-        $data=strftime("%A, %d de %B de %Y - %H:%M", $post['created_at']);
+        $data=strftime("%A, %d de %B de %Y | %H:%M", $post['created_at']);
+        $data=ucfirst($data);
         print '<li>';
         print '<small>'.$data.'</small><br>';
         print '<a href="'.$postRead.'">'.$post['title'].'</a>';
