@@ -25,6 +25,13 @@ select{
 .hide{
     display: none;
 }
+.lista{
+    margin-left: -1em;
+}
+.lista li{
+    list-style: none;
+    margin-left: 0;
+}
 .nav a small{
     color:#333;
 }
