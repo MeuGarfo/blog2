@@ -22,11 +22,22 @@ small{
     margin:0;
     padding: 0.1em;
 }
+.content img{
+    background:#f6f6f6;
+    display:block;
+    margin:0 auto;
+    padding:10px;
+    max-width:calc(100% - 20px);
+    width:calc(400px - 20px);
+}
 .green{
     color:green;
 }
 .hide{
     display: none;
+}
+.left{
+    text-align:left;
 }
 .lista{
     margin: 0;
@@ -42,7 +53,7 @@ small{
 }
 .lista a{
     display: block;
-    padding: 0.5em;
+    padding: 0.25em;
     text-decoration: none;
 }
 .lista a:hover small{
@@ -83,6 +94,9 @@ small{
 .responsive th,.responsive td {
     text-align: left;
 }
+.right{
+    text-align:right;
+}
 .well {
     min-height: 20px;
     padding: 19px;
@@ -107,7 +121,7 @@ small{
 }
 /*mobile*/
 @media ( max-width : 1024px) {
-    .lista{
+    h1,h2,h3,.left,.lista,.right{
         text-align: center;
     }
 }

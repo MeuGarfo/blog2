@@ -42,7 +42,7 @@ class Signin
             $user=$auth->signin();
             if (isset($user['error'])) {
                 $data['error']=array_flip($user['error']);
-                $view->view('read/signin', $data);
+                $view->view('signin/read', $data);
             } else {
                 $view->redirect('/posts');
             }

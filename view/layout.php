@@ -40,11 +40,12 @@
     <div class="c">
         <div class="r">
             <div class="g12 center">
-                <h1>Blog</h1>
+                <h1><?php print $_ENV['site_name'];?></h1>
             </div>
         </div>
         <div class="r">
-            <div class="g3">
+            <div class="g2 center">
+                <p><small>Menu</small></p>
                 <?php
                 if (isset($user) && is_array($user)) {
                     $view->out('inc/leftAuthPrivate', $data);
@@ -53,10 +54,10 @@
                 }
                 ?>
             </div>
-            <div class="g6">
+            <div class="g8">
                 <?php print $content; ?>
             </div>
-            <div class="g3">
+            <div class="g2">
                 right
             </div>
         </div>

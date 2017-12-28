@@ -20,7 +20,7 @@
         <button type="button" id="CreateTable" onclick="editor(this.id)">table</button>
         <button type="button" id="html" onclick="editor(this.id)">html</button>
     </div>
-    <div class="well" id="editor" contenteditable="true" tabindex="2"><?php print @$post['content'];?></div>
+    <div class="well content" id="editor" contenteditable="true" tabindex="2"><?php print @$post['content'];?></div>
     <input type="hidden" name="content" id="content">
     <select name="online">
         <option value="1" <?php if (@$post['online']=='1') {
@@ -33,7 +33,6 @@
     <div class="btn-group">
         <input type="submit" value="<?php print $title; ?>" tabindex="3">
     </div>
-
 </form>
 <script type="text/javascript">
 $(function(){
