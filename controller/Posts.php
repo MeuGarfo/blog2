@@ -74,19 +74,23 @@ class Posts
     public function getRead()
     {
         /*VARs*/
-        $where['AND']=[
-            'id'=>$this->id,
-            'slug'=>$this->slug
+       $where=[
+            'id'=>$this->id
         ];
         $data['user']=$this->auth->isAuth();
         $data['post']=$this->db->get('posts', '*', $where);
         $data['view']=$this->view;
         /*RULEs*/
-        if ($data['post'] && @$data['post']['online']=='1') {
-            $this->view->out('posts/read', $data);
+        if (is_numeric($this->id) && $data['post'] && @$data['post']['online']=='1') {
+            if($this->slug==$data['post']['slug']){
+                $this->view->out('posts/read', $data);            
+            }else{
+                $url='/posts/'.$data['post']['slug'].'/'.$data['post']['id'];
+                $this->view->redirect($url);
+            }
         } else {
             $this->view->out('404');
-        }
+        }    
     }
     public function getUpdate()
     {
@@ -181,6 +185,9 @@ class Posts
             if ($this->auth->isAuth()) {
                 $where=[
                     "id[>=]" => 1
+                ];
+                $where['ORDER']=[
+                    'created_at'=>'DESC'
                 ];
                 $data['posts']=$this->db->select('posts', '*', $where);
                 $this->view->out('posts/showAll', $data);

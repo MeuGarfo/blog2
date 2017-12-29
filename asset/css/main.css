@@ -1,4 +1,8 @@
 /*Tags*/
+hr{
+    border:none;
+    border-top:2px dashed #f6f6f6;
+}
 img{
     max-width: calc(100% - 20px);
 }
@@ -23,12 +27,11 @@ small{
     padding: 0.1em;
 }
 .content img{
-    background:#f6f6f6;
+    background:#f6f6f6;  
     display:block;
     margin:0 auto;
     padding:10px;
     max-width:calc(100% - 20px);
-    width:calc(400px - 20px);
 }
 .green{
     color:green;
@@ -41,6 +44,7 @@ small{
 }
 .lista{
     margin: 0;
+    margin-bottom:1em;
     padding: 0;
 }
 .lista li{
@@ -62,6 +66,10 @@ small{
 .lista h2{
     margin: 0;
     padding:0;
+}
+.lista p{
+    color:gray;
+    margin:0;
 }
 .nav a small{
     color:#333;
@@ -119,9 +127,20 @@ small{
         width:calc(100% - 38px - 0.7em);
     }
 }
+/*desktop*/
+@media ( min-width : 1024px) {
+    .mobile{
+        display:none;
+        visibility:hidden; 
+    }
+}
 /*mobile*/
 @media ( max-width : 1024px) {
     h1,h2,h3,.left,.lista,.right{
         text-align: center;
+    }
+    .desktop{
+        display:none;
+        visibility:hidden;
     }
 }

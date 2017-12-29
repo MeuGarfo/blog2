@@ -25,7 +25,7 @@ class Logout
         /*RULEs*/
         if ($this->user && $this->user['token']==$token) {
             $this->auth->logout();
-            $this->view->redirect('/signin');
+            $this->view->redirect('/');
         } else {
             $this->view->out('404');
         }

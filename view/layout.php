@@ -1,3 +1,16 @@
+<?php
+if(!isset($_ENV['site_name'])){
+    $filename=ROOT."app/.env";
+    if (file_exists($filename)) {
+        $dotenv = new Dotenv\Dotenv(ROOT."app");
+        $dotenv->load();
+        $dbConfig=require_once ROOT."db.php";
+        $Migration=new Basic\Migration($dbConfig);
+    } else {
+        die("cp example.env app/.env");
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,21 +57,22 @@
             </div>
         </div>
         <div class="r">
-            <div class="g2 center">
-                <p><small>Menu</small></p>
-                <?php
-                if (isset($user) && is_array($user)) {
-                    $view->out('inc/leftAuthPrivate', $data);
-                } else {
-                    $view->out('inc/leftAuthPublic', $data);
-                }
-                ?>
+            <div class="g2 center desktop">
+                <small>Ads</small>
             </div>
             <div class="g8">
                 <?php print $content; ?>
             </div>
-            <div class="g2">
-                right
+            <div class="g2 center">
+                <hr class="mobile">
+                <small>Opções</small>
+                <?php
+                if (isset($user) && is_array($user)) {
+                    $view->out('inc/rightAuthPrivate', $data);
+                } else {
+                    $view->out('inc/rightAuthPublic', $data);
+                }
+                ?>
             </div>
         </div>
     </div>

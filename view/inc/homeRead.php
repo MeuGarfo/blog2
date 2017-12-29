@@ -1,4 +1,4 @@
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filtrar pelo titulo">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar post">
 <?php
 if (isset($posts) && is_array($posts) && count($posts)>0) {
     print '<ul class="lista" id="myUL">';
@@ -7,9 +7,10 @@ if (isset($posts) && is_array($posts) && count($posts)>0) {
         $postCreatedAt=strftime("%d/%b/%Y %H:%M", $post['created_at']);
         $postCreatedAt=ucfirst($postCreatedAt);
         print '<li>';
-        print '<a href="'.$postRead.'"><small>'.$postCreatedAt.'</small><br>';
-        print $post['title'].'</a>';
-        print '</li>'.PHP_EOL;
+        print '<a href="'.$postRead.'">';
+        print '<small>'.$postCreatedAt.'';
+        print '</small><br>'.$post['title'];
+        print '</a></li>'.PHP_EOL;
     }
     print '</ul>';
 } else {

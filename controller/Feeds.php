@@ -39,7 +39,7 @@ class Feeds
             "id[>=]" => 1,
             "online"=>1
         ];
-        $where['LIMIT']=20;
+        $where['LIMIT']=5;
         $where['ORDER']=[
             'created_at'=>'DESC'
         ];
