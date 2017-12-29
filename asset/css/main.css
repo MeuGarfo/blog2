@@ -57,11 +57,12 @@ small{
 }
 .lista a{
     display: block;
-    padding: 0.25em;
+    padding: 0.5em;
     text-decoration: none;
 }
-.lista a:hover small{
+.lista a:hover{
     color:#333;
+    text-decoration:underline;
 }
 .lista h2{
     margin: 0;
