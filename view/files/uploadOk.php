@@ -1,7 +1,18 @@
 <?php
 $data['title']='Sucesso';
-$data['content']=<<<heredoc
+if ($file['is_image']) {
+    $data['content']=<<<heredoc
 <h2>{$data['title']}</h2>
-<p><a href="{$file}">{$file}</a></p>
+<textarea rows="3">
+    <a href="{$url}" title="Ver o original">
+        <img src="{$_ENV['site_url']}/images/400/{$file['name']}" alt="{$file['name']}">
+    </a>
+</textarea>
 heredoc;
+} else {
+    $data['content']=<<<heredoc
+<h2>{$data['title']}</h2>
+<p><a href="{$url}">{$url}</a></p>
+heredoc;
+}
 $view->view('layout', $data);
