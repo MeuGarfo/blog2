@@ -20,6 +20,11 @@ switch (@$segment[0]) {
     $controller=new app\controller\Home();
     $controller->index($method);
     break;
+    /*images*/
+    case 'images':
+    $controller=new app\controller\Images();
+    $controller->index($method);
+    break;
     /*logout*/
     case 'logout':
     $controller=new app\controller\Logout();
