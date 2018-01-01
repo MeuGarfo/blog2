@@ -12,6 +12,6 @@ switch ($errors[0]) {
 $data['content']=<<<heredoc
 <h2>{$data['title']}</h2>
 <p>{$error}</p>
-<p><a href="http://blog.dev/files?create">Voltar</a></p>
+<p><a href="/files?create">Voltar</a></p>
 heredoc;
 $view->view('layout', $data);
