@@ -86,8 +86,13 @@ class Files
         ];
         $file=$upload->upload('file', $exts);
         if (isset($file['error'])) {
-            print '<pre>';
-            print_r($file['error']);
+            $data=[
+                'url'=>$_ENV['site_url'].'/file/'.$file['name'],
+                'user'=>$this->user,
+                'view'=>$this->view,
+                'errors'=>$file['error']
+            ];
+            $this->view->out('files/uploadError', $data);
         } else {
             $destination=ROOT.'file/'.$file['name'];
             $upload->move($file['temp'], $destination);
