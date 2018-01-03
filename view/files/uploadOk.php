@@ -5,7 +5,7 @@ if ($file['is_image']) {
 <h2>{$data['title']}</h2>
 <textarea rows="3">
     <a href="{$url}" title="Ver o original">
-        <img src="{$_ENV['site_url']}/images/400/{$file['name']}" alt="{$file['name']}">
+        <img src="/images/400/{$file['name']}" alt="{$file['name']}">
     </a>
 </textarea>
 heredoc;
