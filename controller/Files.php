@@ -97,7 +97,7 @@ class Files
             $destination=ROOT.'file/'.$file['name'];
             $upload->move($file['temp'], $destination);
             $data=[
-                'url'=>$_ENV['site_url'].'/file/'.$file['name'],
+                'url'=>'/file/'.$file['name'],
                 'user'=>$this->user,
                 'view'=>$this->view,
                 'file'=>$file
