@@ -1,5 +1,5 @@
 <h2><?php print $title; ?></h2>
-<p><a href="/posts?create">Criar post</a></p>
+<p><a href="/posts?create">Criar post</a> | <a href="/files?create">Enviar arquivo</a></p>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filtrar pelo titulo">
 <?php
 if (isset($posts) && is_array($posts) && count($posts)>0) {
