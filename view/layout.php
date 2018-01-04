@@ -1,5 +1,5 @@
 <?php
-if(!isset($_ENV['site_name'])){
+if (!isset($_ENV['site_name'])) {
     $filename=ROOT."app/.env";
     if (file_exists($filename)) {
         $dotenv = new Dotenv\Dotenv(ROOT."app");
@@ -24,6 +24,10 @@ if(!isset($_ENV['site_name'])){
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed/" />
     <meta property="og:site_name" content="<?php print $_ENV['site_name']; ?>">
     <meta property="og:title" content="<?php print $title; ?>">
+    <link rel="apple-touch-icon" href="/file/logo180.png" sizes="180x180">
+    <link rel="icon" href="/file/logo32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/file/logo16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/file/logo32.ico">
     <meta property="og:url" content="<?php
     if (isset($post)) {
         $url=$_ENV['site_url'].'/posts/'.$post['slug'].'/'.$post['id'];

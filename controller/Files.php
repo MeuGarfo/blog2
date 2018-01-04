@@ -45,7 +45,12 @@ class Files
     {
         /*VARs*/
         $dir=ROOT.'file';
-        $ignored = array('.', '..', '.svn', '.htaccess');
+        $ignored = [
+            '.',
+            '..',
+            '.svn',
+            '.htaccess'
+        ];
         $files = array();
         /*RULEs*/
         if ($this->user) {
@@ -80,9 +85,11 @@ class Files
         $upload=new Upload();
         $exts=[
             'gif',
+            'ico',
             'jpg',
             'pdf',
-            'png'
+            'png',
+            'svg'
         ];
         $file=$upload->upload('file', $exts);
         if (isset($file['error'])) {
