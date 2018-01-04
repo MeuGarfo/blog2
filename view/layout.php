@@ -61,22 +61,19 @@ if (!isset($_ENV['site_name'])) {
             </div>
         </div>
         <div class="r">
-            <div class="g2 center desktop">
-                <small>Ads</small>
-            </div>
-            <div class="g8">
-                <?php print $content; ?>
-            </div>
             <div class="g2 center">
                 <hr class="mobile">
                 <small>Opções</small>
                 <?php
                 if (isset($user) && is_array($user)) {
-                    $view->out('inc/rightAuthPrivate', $data);
+                    $view->out('inc/leftAuthPrivate', $data);
                 } else {
-                    $view->out('inc/rightAuthPublic', $data);
+                    $view->out('inc/leftAuthPublic', $data);
                 }
                 ?>
+            </div>
+            <div class="g10">
+                <?php print $content; ?>
             </div>
         </div>
     </div>
